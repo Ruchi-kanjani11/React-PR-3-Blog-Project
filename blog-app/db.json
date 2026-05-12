@@ -1,0 +1,100 @@
+{
+  "blogs": [
+    {
+      "id": "1",
+      "title": "Getting Started with React",
+      "description": "React is a JavaScript library for building user interfaces. Learn the basics of React including components, props, and state management.",
+      "content": "React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes. Declarative views make your code more predictable and easier to debug.\n\nReact components are the building blocks of any React application. A component is a piece of the UI that has its own logic and appearance. Components can be as small as a button or as large as an entire page.\n\nProps are read-only inputs passed to components. They allow you to customize components when they are rendered. State, on the other hand, is data that changes over time within a component. When state changes, the component re-renders automatically.\n\nReact also provides hooks like useState and useEffect that allow functional components to manage state and side effects. This makes React both powerful and flexible for building modern web applications.",
+      "category": "React",
+      "author": "John Doe",
+      "authorId": "1",
+      "imageUrl": "https://picsum.photos/800/400?random=1",
+      "date": "2024-01-15"
+    },
+    {
+      "id": "2",
+      "title": "Understanding JavaScript Closures",
+      "description": "A closure is the combination of a function bundled together with references to its surrounding state. Learn how closures work and why they're important.",
+      "content": "Closures are one of the most powerful and often misunderstood features of JavaScript. A closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.\n\nPractical applications of closures include:\n1. Data privacy and encapsulation\n2. Creating factory functions\n3. Implementing callbacks and higher-order functions\n4. Maintaining state in asynchronous operations\n\nUnderstanding closures is essential for writing efficient JavaScript code and is a common topic in technical interviews.",
+      "category": "JavaScript",
+      "author": "Jane Smith",
+      "authorId": "2",
+      "imageUrl": "https://picsum.photos/800/400?random=2",
+      "date": "2024-01-10"
+    },
+    {
+      "id": "3",
+      "title": "CSS Grid vs Flexbox: When to Use Which",
+      "description": "Both CSS Grid and Flexbox are powerful layout systems, but they serve different purposes. Learn when to use each for optimal layouts.",
+      "content": "CSS Grid is for 2-dimensional layouts (rows AND columns), while Flexbox is for 1-dimensional layouts (either rows OR columns). Choose the right tool for your layout needs.\n\nUse Flexbox when:\n- You need to distribute space along a single axis\n- You want items to wrap to new lines\n- You need alignment control in one direction\n\nUse CSS Grid when:\n- You need full control over both rows and columns\n- You're creating complex, grid-based layouts\n- You want to overlap items easily\n\nBoth can be used together for maximum layout power!",
+      "category": "CSS",
+      "author": "Mike Johnson",
+      "authorId": "1",
+      "imageUrl": "https://picsum.photos/800/400?random=3",
+      "date": "2024-01-05"
+    },
+    {
+      "id": "4",
+      "title": "Mastering Async/Await in JavaScript",
+      "description": "Async/await makes working with promises much easier. Learn how to write asynchronous code that looks synchronous.",
+      "content": "Async/await is syntactic sugar on top of Promises that makes asynchronous code easier to write and read. An async function always returns a Promise, and await can only be used inside async functions.\n\nBenefits of async/await:\n1. Cleaner and more readable code\n2. Better error handling with try/catch\n3. Easier debugging\n4. Avoids callback hell and promise chains\n\nBest practices include handling errors properly, using Promise.all for parallel operations, and avoiding `await` in loops when operations can be concurrent.",
+      "category": "JavaScript",
+      "author": "Sarah Wilson",
+      "authorId": "2",
+      "imageUrl": "https://picsum.photos/800/400?random=4",
+      "date": "2024-01-20"
+    },
+    {
+      "id": "5",
+      "title": "Building RESTful APIs with Node.js and Express",
+      "description": "Learn how to create robust RESTful APIs using Node.js and Express framework. Perfect for backend development beginners.",
+      "content": "Node.js combined with Express makes building RESTful APIs straightforward and efficient. REST (Representational State Transfer) is an architectural style for designing networked applications.\n\nKey concepts:\n- HTTP methods (GET, POST, PUT, DELETE)\n- Status codes (200, 201, 400, 401, 404, 500)\n- Middleware for authentication, logging, and error handling\n- Route parameters and query strings\n- Request and response objects\n\nProper API design includes using plural nouns for endpoints, returning appropriate status codes, and including proper error messages.",
+      "category": "Node.js",
+      "author": "John Doe",
+      "authorId": "1",
+      "imageUrl": "https://picsum.photos/800/400?random=5",
+      "date": "2024-01-25"
+    },
+    {
+      "id": "6",
+      "title": "React Hooks: Deep Dive into useState and useEffect",
+      "description": "Master the two most important React Hooks - useState for state management and useEffect for side effects.",
+      "content": "Hooks revolutionized React development by allowing functional components to have state and lifecycle features. useState and useEffect are the foundation of React Hooks.\n\nuseState:\n- Returns a stateful value and a function to update it\n- Can manage different types of state (objects, arrays, primitives)\n- Functional updates for state that depends on previous value\n\nuseEffect:\n- Performs side effects in functional components\n- Dependency array controls when the effect runs\n- Cleanup function for subscriptions and event listeners\n\nUnderstanding these hooks is crucial for effective React development.",
+      "category": "React",
+      "author": "Jane Smith",
+      "authorId": "2",
+      "imageUrl": "https://picsum.photos/800/400?random=6",
+      "date": "2024-02-01"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "email": "john@example.com",
+      "password": "123456",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "Jane Smith",
+      "email": "jane@example.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "3",
+      "name": "Mike Johnson",
+      "email": "mike@example.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": "4",
+      "name": "Sarah Wilson",
+      "email": "sarah@example.com",
+      "password": "123456",
+      "role": "user"
+    }
+  ]
+}
