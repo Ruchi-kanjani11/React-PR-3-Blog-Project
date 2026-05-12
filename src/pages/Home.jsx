@@ -1,4 +1,4 @@
-// pages/Home.jsx
+// pages/Home.jsx - Updated with better category dropdown
 import React, { useState, useEffect } from 'react';
 import { getBlogs, deleteBlog } from '../services/api';
 import BlogCard from '../components/BlogCard';
@@ -27,7 +27,7 @@ const Home = () => {
       const response = await getBlogs();
       setBlogs(response.data);
       setFilteredBlogs(response.data);
-      const uniqueCategories = [...new Set(response.data.map(blog => blog.category))];
+      const uniqueCategories = ['All Categories', ...new Set(response.data.map(blog => blog.category))];
       setCategories(uniqueCategories);
     } catch (error) {
       console.error('Error fetching blogs:', error);
@@ -45,7 +45,7 @@ const Home = () => {
       );
     }
     
-    if (selectedCategory) {
+    if (selectedCategory && selectedCategory !== 'All Categories') {
       filtered = filtered.filter(blog => blog.category === selectedCategory);
     }
     
@@ -86,19 +86,21 @@ const Home = () => {
           <div className="search-box">
             <input
               type="text"
-              placeholder="Search blogs..."
+              placeholder="🔍 Search blogs by title..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
+          
           <div className="category-filter">
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
             >
-              <option value="">All Categories</option>
               {categories.map(category => (
-                <option key={category} value={category}>{category}</option>
+                <option key={category} value={category}>
+                  {category === 'All Categories' ? '📚 All Categories' : `🏷️ ${category}`}
+                </option>
               ))}
             </select>
           </div>
@@ -122,14 +124,14 @@ const Home = () => {
               onClick={() => paginate(currentPage - 1)}
               disabled={currentPage === 1}
             >
-              Previous
+              ← Previous
             </button>
             <span>Page {currentPage} of {totalPages}</span>
             <button
               onClick={() => paginate(currentPage + 1)}
               disabled={currentPage === totalPages}
             >
-              Next
+              Next →
             </button>
           </div>
         )}

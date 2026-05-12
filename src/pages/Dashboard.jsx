@@ -1,4 +1,3 @@
-// pages/Dashboard.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getBlogs, deleteBlog } from '../services/api';
@@ -25,12 +24,10 @@ const Dashboard = () => {
       const response = await getBlogs();
       const allBlogs = response.data;
       setBlogs(allBlogs);
-      
-      // Filter blogs for current user
+
       const usersBlogs = allBlogs.filter(blog => blog.authorId === user?.id);
       setUserBlogs(usersBlogs);
-      
-      // Calculate statistics
+
       const categories = [...new Set(allBlogs.map(blog => blog.category))];
       setStats({
         totalBlogs: allBlogs.length,
@@ -48,7 +45,6 @@ const Dashboard = () => {
     if (window.confirm('Are you sure you want to delete this blog? This action cannot be undone.')) {
       try {
         await deleteBlog(id);
-        // Refresh the blogs list
         await fetchData();
       } catch (error) {
         console.error('Error deleting blog:', error);
@@ -66,7 +62,6 @@ const Dashboard = () => {
           <p>Here's what's happening with your blogs</p>
         </div>
 
-        {/* Stats Cards */}
         <div className="stats-grid">
           <div className="stat-card">
             <div className="stat-icon">📝</div>
@@ -75,7 +70,7 @@ const Dashboard = () => {
               <p>Total Blogs</p>
             </div>
           </div>
-          
+
           <div className="stat-card">
             <div className="stat-icon">✍️</div>
             <div className="stat-info">
@@ -83,7 +78,7 @@ const Dashboard = () => {
               <p>Your Blogs</p>
             </div>
           </div>
-          
+
           <div className="stat-card">
             <div className="stat-icon">🏷️</div>
             <div className="stat-info">
@@ -91,7 +86,7 @@ const Dashboard = () => {
               <p>Categories</p>
             </div>
           </div>
-          
+
           <div className="stat-card">
             <div className="stat-icon">👥</div>
             <div className="stat-info">
@@ -101,7 +96,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Quick Actions */}
         <div className="quick-actions">
           <h2>Quick Actions</h2>
           <div className="action-buttons">
@@ -114,10 +108,9 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Your Blogs Section */}
         <div className="user-blogs-section">
           <h2>Your Blogs ({userBlogs.length})</h2>
-          
+
           {userBlogs.length === 0 ? (
             <div className="no-blogs">
               <p>You haven't created any blogs yet.</p>
@@ -142,8 +135,8 @@ const Dashboard = () => {
                     <Link to={`/edit/${blog.id}`} className="action-link edit-link">
                       Edit
                     </Link>
-                    <button 
-                      onClick={() => handleDelete(blog.id)} 
+                    <button
+                      onClick={() => handleDelete(blog.id)}
                       className="action-link delete-link"
                     >
                       Delete
@@ -155,7 +148,6 @@ const Dashboard = () => {
           )}
         </div>
 
-        {/* Recent Activity / Insights */}
         <div className="insights-section">
           <h2>Insights</h2>
           <div className="insights-grid">
@@ -163,9 +155,9 @@ const Dashboard = () => {
               <h4>Top Category</h4>
               {stats.categories.length > 0 && (
                 <p>
-                  {stats.categories.reduce((a, b) => 
-                    blogs.filter(blog => blog.category === a).length > 
-                    blogs.filter(blog => blog.category === b).length ? a : b
+                  {stats.categories.reduce((a, b) =>
+                    blogs.filter(blog => blog.category === a).length >
+                      blogs.filter(blog => blog.category === b).length ? a : b
                   )}
                 </p>
               )}

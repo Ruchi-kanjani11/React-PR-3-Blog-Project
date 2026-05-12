@@ -1,7 +1,7 @@
-// pages/Register.jsx
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import Loader from '../components/Loader';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -11,9 +11,14 @@ const Register = () => {
     confirmPassword: ''
   });
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');  // Add success state
   const [loading, setLoading] = useState(false);
+  const { register, loading: authLoading } = useAuth();
   const navigate = useNavigate();
-  const { register } = useAuth();
+
+  if (authLoading) {
+    return <Loader />;
+  }
 
   const handleChange = (e) => {
     setFormData({
@@ -21,12 +26,14 @@ const Register = () => {
       [e.target.name]: e.target.value
     });
     setError('');
+    setSuccess('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError('');
+    setSuccess('');
 
     // Validation
     if (formData.password !== formData.confirmPassword) {
@@ -50,7 +57,11 @@ const Register = () => {
     const result = await register(userData);
     
     if (result.success) {
-      navigate('/dashboard');
+      setSuccess('✅ Registration successful! Welcome aboard! 🎉');
+      // Redirect after 2 seconds so user can see the success message
+      setTimeout(() => {
+        navigate('/dashboard');
+      }, 2000);
     } else {
       setError(result.error || 'Registration failed. Please try again.');
     }
@@ -63,7 +74,21 @@ const Register = () => {
         <h2>Create Account</h2>
         <p>Join our blogging community today!</p>
         
-        {error && <div className="alert alert-error">{error}</div>}
+        {/* Success Alert */}
+        {success && (
+          <div className="alert alert-success">
+            <span className="alert-icon">🎉</span>
+            {success}
+          </div>
+        )}
+        
+        {/* Error Alert */}
+        {error && (
+          <div className="alert alert-error">
+            <span className="alert-icon">⚠️</span>
+            {error}
+          </div>
+        )}
         
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">

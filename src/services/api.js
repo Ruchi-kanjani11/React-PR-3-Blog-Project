@@ -1,4 +1,3 @@
-// services/api.js
 import axios from 'axios';
 
 const API = axios.create({
@@ -6,7 +5,6 @@ const API = axios.create({
   timeout: 10000,
 });
 
-// Add auth token to requests
 API.interceptors.request.use((config) => {
   const user = JSON.parse(localStorage.getItem('user'));
   if (user && user.token) {
@@ -15,14 +13,12 @@ API.interceptors.request.use((config) => {
   return config;
 });
 
-// Blog APIs
 export const getBlogs = () => API.get('/blogs');
 export const getBlogById = (id) => API.get(`/blogs/${id}`);
 export const createBlog = (data) => API.post('/blogs', data);
 export const updateBlog = (id, data) => API.put(`/blogs/${id}`, data);
 export const deleteBlog = (id) => API.delete(`/blogs/${id}`);
 
-// User APIs
 export const getUsers = () => API.get('/users');
 export const getUserById = (id) => API.get(`/users/${id}`);
-export const createUser = (data) => API.post('/users', data);
+export const createUser = (data) => API.post('/users', data);  // ← THIS MUST EXIST

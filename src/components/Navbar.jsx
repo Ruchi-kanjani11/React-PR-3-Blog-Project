@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { useAuth } from '../context/AuthContext';
+import Loader from '../components/Loader';
 
 const Navbar = () => {
-  const { user, logout } = useAuth();
+  const { user, logout ,loading} = useAuth();
   const navigate = useNavigate();
+
+    if (loading) {
+    return <Loader/>;
+  }
 
   const handleLogout = () => {
     logout();            

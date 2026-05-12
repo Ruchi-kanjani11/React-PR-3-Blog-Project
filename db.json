@@ -65,6 +65,17 @@
       "authorId": "2",
       "imageUrl": "https://picsum.photos/800/400?random=6",
       "date": "2024-02-01"
+    },
+    {
+      "title": "Dolor autem consecte",
+      "description": "Est sunt exercitati",
+      "content": "Officia voluptas vol",
+      "category": "Python",
+      "imageUrl": "https://www.keneliz.in",
+      "author": "mclqiowdliqwpd",
+      "authorId": "3MTXXRG8_OY",
+      "date": "2026-05-12",
+      "id": "6NaTs2m1ITA"
     }
   ],
   "users": [
@@ -95,6 +106,14 @@
       "email": "sarah@example.com",
       "password": "123456",
       "role": "user"
+    },
+    {
+      "id": "3MTXXRG8_OY",
+      "name": "mclqiowdliqwpd",
+      "email": "unknown67@gmail.com",
+      "password": "12345678",
+      "role": "user"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
